@@ -1,0 +1,1 @@
+A bot which creates a map of day ahead electricity prices based on ENTSOE-P data and tweets it.
