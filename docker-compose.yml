@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  bot:
+    image: eu-electricity-tomorrow
+    build: .
+    restart: unless-stopped
+    container_name: eu-electricity-tomorrow-bot
+    volumes:
+      - data:/bot-data
+    env_file:
+    - ./env_file
+    tty: true
+volumes:
+  data:
