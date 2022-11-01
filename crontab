@@ -1,4 +1,4 @@
 SHELL=/bin/bash
 BASH_ENV=/container.env
-00 11 * * * root cd /app && /usr/local/bin/python3 eu-electricity-tomorrow.py > /proc/1/fd/1 2>/proc/1/fd/2
+0 11 * * * root cd /app && ./run.sh > /proc/1/fd/1 2>/proc/1/fd/2
 # must be ended with a new line "LF" (Unix) and not "CRLF" (Windows)
