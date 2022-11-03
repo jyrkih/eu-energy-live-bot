@@ -24,11 +24,10 @@ def prepare_data(start, end):
 
     client = EntsoePandasClient(api_key=os.getenv("ENTSOE_API_KEY"))
 
-    file_name='entsoe.p'
-    if os.path.exists(file_name):
-        df = pd.read_pickle(file_name)
-    else:
-        df = pd.DataFrame()
+    # file_name='entsoe.p'
+    # if os.path.exists(file_name):
+    #     df = pd.read_pickle(file_name)
+    df = pd.DataFrame()
 
     if len(df.columns)-1 != len(zones) or start != df.index[0] or end != df.index[-1]:
         df = pd.DataFrame()
@@ -38,7 +37,7 @@ def prepare_data(start, end):
             df[zone] = client.query_day_ahead_prices(zone, start=start, end=end)
 
             df['date'] = pd.to_datetime(df.index).date
-            df.to_pickle(file_name)  # save it
+            # df.to_pickle(file_name)  # save it
             time.sleep(1)
 
     df2 = df.groupby('date').mean()
