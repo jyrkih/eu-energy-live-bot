@@ -42,6 +42,10 @@ def prepare_data(start, end):
 
     df2 = df.groupby('date').mean()
     df2.reset_index(drop=True, inplace=True)
+    print(df2)
+    if len(df.index) < 2:
+        print("Missing data %d. Exiting" % len(df.index))
+        sys.exit(1)
     df2.set_index(pd.Index(["today", "tomorrow"]), inplace=True)
     df2 = df2.T
     df2.index.rename('zoneName', inplace=True)
