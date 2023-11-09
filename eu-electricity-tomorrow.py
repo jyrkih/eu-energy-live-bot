@@ -8,6 +8,7 @@ import plotly.graph_objs as go
 import pandas as pd
 import logging
 import os
+import sys
 
 from datetime import date,timedelta
 import time
@@ -120,7 +121,15 @@ def create_image(geo_df, title_text, filename):
     return filename
 
 
-
+def new_status(api, filename, title_text):
+    try:
+        x = api.media_upload(filename=filename)
+        api.update_status(status=title_text, media_ids=[x.media_id_string])
+        logger.info("Status update OK")
+    except Exception as e:
+        logger.error("Error updating status", exc_info=True)
+        raise e
+    
 def status_update(api, filename, title_text):
     try:
         media = api.media_upload(filename=filename)
