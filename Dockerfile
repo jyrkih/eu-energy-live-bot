@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.9
 RUN apt-get update
 
 RUN apt-get -y install cron python3-gdal gdal-bin libgdal-dev
